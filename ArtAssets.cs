@@ -16,17 +16,6 @@ namespace InheritanceGameDemo
 _/ \_
         ";
 
-        public static string PlayerSpawn = @"
-
-     /  /          \
-/   /   \          /   \
-\   \   /          \   /  /
-/   /  /     o   \  \  \  \
-\  /  /  /  /|\  /  /  /  /
- \ \  \ /   / \  \ /   \ / 
-
-        ";
-
         public static string Bee = @"              \     /
           \    o ^ o    /
             \ (     ) /

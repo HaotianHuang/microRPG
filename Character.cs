@@ -11,6 +11,8 @@ namespace InheritanceGameDemo
         public string TextArt { get; protected set; }
         public ConsoleColor Color { get; protected set; }
         public Random RandGenerator { get; protected set; }
+        public bool IsDead { get => Health <= 0; }
+        public bool IsAlive { get => Health > 0; }
 
         public Character(string name, int health, ConsoleColor color, string textArt)
 		{

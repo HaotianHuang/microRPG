@@ -17,27 +17,27 @@ namespace InheritanceGameDemo
             int randPercent = RandGenerator.Next(1, 101);
             if (randPercent <= 90)
             {
-                WriteLine("and it hits!");
+                Write("and it hits!");
                 otherCharacter.TakeDamage(2);
             }
             else 
             {
-                WriteLine("and it misses...");
+                Write("and it misses...");
             }
         }
 
         private void SwingAt(Character otherCharacter)
         {
-            Write("Taking a mighty swing...");
+            WriteLine("Taking a mighty swing...");
                  int randPercent = RandGenerator.Next(1, 101);
             if (randPercent <= 50)
             {
-                WriteLine("and it connects solidly!");
+                Write("and it connects solidly!");
                 otherCharacter.TakeDamage(4);
             }
             else 
             {
-                WriteLine("and it misses...");
+                Write("and it misses...");
             }
         }
 

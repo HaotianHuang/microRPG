@@ -40,9 +40,17 @@ namespace InheritanceGameDemo
             ForegroundColor = Color;
             WriteLine($"Bee {Name} is fighting {otherCharacter.Name}!");
             ResetColor();
-            // int randNum = RandGenerator.Next(1, 101);
-            // if (randNum <= 50) Fly();
-            // else Sting();
+            int randNum = RandGenerator.Next(1, 101);
+            Write($"Bee {Name} bites at {otherCharacter.Name} and ");
+            if (randNum <= 50) 
+            {
+                WriteLine("hits for 6 damage!");
+                otherCharacter.TakeDamage(6);
+            }
+            else 
+            {
+                WriteLine("misses...");
+            }
 
             ResetColor();
         }
