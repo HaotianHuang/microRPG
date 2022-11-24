@@ -8,6 +8,25 @@ namespace InheritanceGameDemo
 {
     static class ArtAssets
     {
+
+        public static string Player = @"
+       /
+  o   /
+./|\.%
+_/ \_
+        ";
+
+        public static string PlayerSpawn = @"
+
+     /  /          \
+/   /   \          /   \
+\   \   /          \   /  /
+/   /  /     o   \  \  \  \
+\  /  /  /  /|\  /  /  /  /
+ \ \  \ /   / \  \ /   \ / 
+
+        ";
+
         public static string Bee = @"              \     /
           \    o ^ o    /
             \ (     ) /

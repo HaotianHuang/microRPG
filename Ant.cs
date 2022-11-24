@@ -3,7 +3,7 @@ using static System.Console;
 
 namespace InheritanceGameDemo
 {
-	class Ant : Enemy
+	class Ant : Character
 	{
         private Item CurrentItem;
         private int ChargeDistance;
@@ -40,6 +40,30 @@ namespace InheritanceGameDemo
             Write($" {Name}");
             ResetColor();
             WriteLine(" viciously chomps dow!");
+        }
+
+        public override void Fight(Character otherCharacter)
+        {
+
+            // Options:
+            // - 50% hit with a bite for 4 damage.
+            // - 50% miss with a bite. 
+
+            ForegroundColor = Color;
+            WriteLine($"Ant {Name} is fighting {otherCharacter.Name}!");
+            ResetColor();
+            int randNum = RandGenerator.Next(1, 101);
+            Write($"Ant {Name} bites at {otherCharacter.Name} and ");
+            if (randNum <= 50) 
+            {
+                WriteLine("hits for 4 damage!");
+                otherCharacter.TakeDamage(4);
+            }
+            else 
+            {
+                WriteLine("misses...");
+            }
+            ResetColor();
         }
           
 	}

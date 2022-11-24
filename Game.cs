@@ -10,20 +10,22 @@ namespace InheritanceGameDemo
     class Game
     {
 
-        private Ant FireAuntie;
-        private Ant Hades;
-        private Bee BuzzBee;
-        private Item LeafNinjaStar;
+        private Player CurrentPlayer;
+        private Character CurrentEnemy;
+        private List<Character> Enemies;
 
         public Game()
         {
-            FireAuntie = new Ant("Fire Auntie", 100, ConsoleColor.Red, 3);
+            Ant fireAuntie = new Ant("Fire Auntie", 5, ConsoleColor.Red, 3);
             
-            Hades = new Ant("Hades", 200, ConsoleColor.Magenta, 6);
-            LeafNinjaStar = new Item("Leaf Ninja Star", 10);
-            Hades.PickUpItem(LeafNinjaStar);
+            Ant hades = new Ant("Hades", 10, ConsoleColor.Magenta, 6);
+            Item leafNinjaStar = new Item("Leaf Ninja Star", 10);
+            hades.PickUpItem(leafNinjaStar);
 
-            BuzzBee = new Bee("BuzzBee", 75, ConsoleColor.DarkYellow, true);
+            Bee buzzBee = new Bee("BuzzBee", 15, ConsoleColor.DarkYellow, true);
+
+            // Polymorphism 
+            Enemies = new List<Character>() { fireAuntie, hades, buzzBee};
 
         }
 
@@ -31,29 +33,58 @@ namespace InheritanceGameDemo
         {
             WriteLine("##### Micro RPG #####\n");
 
-            FireAuntie.DisplayInfo();
-            WriteLine("");
-            FireAuntie.Charge();
-            FireAuntie.Bite();
-            WriteLine("");
+            // Doing here because may want to ask user for inputs after title screen.
+            CurrentPlayer = new Player("Lucas", 20, ConsoleColor.Green);
+            CurrentPlayer.DisplayInfo();
 
-            Hades.DisplayInfo();
-            WriteLine("");
-            Hades.Charge();
-            Hades.Bite();
-            WriteLine("");
+            CurrentEnemy = Enemies[0];
 
-            BuzzBee.DisplayInfo();
-            WriteLine();
-            BuzzBee.Fly();
-            BuzzBee.Sting();
-            WriteLine("");
+            while (true)
+            {    
+                Clear();
+                CurrentPlayer.DisplayHealthBar();
+                CurrentEnemy.DisplayHealthBar();
+                WriteLine();
+
+                CurrentPlayer.Fight(CurrentEnemy);
+
+                WriteLine();
+                WaitForKey();
+
+                Clear();
+                CurrentPlayer.DisplayHealthBar();
+                CurrentEnemy.DisplayHealthBar();
+                WriteLine();
+
+                CurrentEnemy.Fight(CurrentPlayer);
+
+
+                WaitForKey();   
+            }
+
+            // CurrentPlayer.DisplayHealthBar();
+            // CurrentEnemy.DisplayHealthBar();
+
+            // CurrentEnemy.Fight(CurrentPlayer);
+
+            // CurrentPlayer.DisplayHealthBar();
+            // CurrentEnemy.DisplayHealthBar();
+
+            // Loop! 
+            // Show health bars, so player can decide attack.
+            // Let the player attack the current enemy and display the results.
+            // Re-show the health bars, so player can see the result.
+            // Check if player or enemy is dead. 
+            // Let the enemy attack the player and print out the result. 
+
+
             WaitForKey();
+
         }
 
         private void WaitForKey()
         {
-            WriteLine("Press any key to continue...\n");
+            WriteLine("\nPress any key to continue...\n");
             ReadKey(true);
         }
     }

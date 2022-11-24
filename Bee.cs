@@ -3,7 +3,7 @@ using static System.Console;
 
 namespace InheritanceGameDemo
 {
-	class Bee : Enemy
+	class Bee : Character
 	{
         
         private bool HasPoisonSting;
@@ -33,6 +33,18 @@ namespace InheritanceGameDemo
             if (HasPoisonSting) Write("poison stinger!");
             else Write("sharp stinger!");
             
+        }
+
+         public override void Fight(Character otherCharacter)
+        {
+            ForegroundColor = Color;
+            WriteLine($"Bee {Name} is fighting {otherCharacter.Name}!");
+            ResetColor();
+            // int randNum = RandGenerator.Next(1, 101);
+            // if (randNum <= 50) Fly();
+            // else Sting();
+
+            ResetColor();
         }
           
 	}
